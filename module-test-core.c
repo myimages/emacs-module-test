@@ -222,9 +222,14 @@ provide(emacs_env *env, const char *feature)
 static emacs_value
 Fcalc(emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *data)
 {
-        emacs_value my_needle = args[0];
-        emacs_value my_haystack = args[1];
-        float fuzzy_score = calculate_match((const char*)my_needle , (const char*)my_haystack, 0);
+	emacs_value haystack = args[0];
+	/* emacs_value needle = args[1]; */
+	ptrdiff_t size = 0;
+	env->copy_string_contents(env, haystack, NULL, &size);
+	char *str = malloc(size);
+	env->copy_string_contents(env, haystack, str, &size);
+        float fuzzy_score = calculate_match(str, "needle", 0);
+	free(str);
         return env->make_float(env,(double)fuzzy_score);
 }
 

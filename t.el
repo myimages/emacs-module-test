@@ -10,5 +10,6 @@
 
 (ert-deftest test-calc-score ()
   "test score calculator"
-  (let ((score (calc-score "needle" "score the needle in the haystack")))
+  ;;573958
+  (let ((score (calc-score "score the needle in the haystack" "needle")))
     (should (equal score 0.5739583373069763))))
