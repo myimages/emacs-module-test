@@ -234,7 +234,7 @@ Fcalc(emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *data)
 	env->copy_string_contents(env, haystack, haystack_str, &size);
 	env->copy_string_contents(env, needle, needle_str, &size_2);
 
-        float fuzzy_score = calculate_match(haystack_str, needle_str, 0);
+        float fuzzy_score = calculate_match(needle_str, haystack_str, 0);
 
 	free(haystack_str);
 	free(needle_str);
