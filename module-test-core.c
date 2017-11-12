@@ -224,7 +224,6 @@ Fcalc(emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *data)
 {
 	emacs_value haystack = args[0];
 	emacs_value needle = args[1];
-	bool cs = args[2];
 
 	ptrdiff_t size = 0;
 	ptrdiff_t size_2 = 0;
@@ -234,13 +233,7 @@ Fcalc(emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *data)
 	char *needle_str = malloc(size_2);
 	env->copy_string_contents(env, haystack, haystack_str, &size);
 	env->copy_string_contents(env, needle, needle_str, &size_2);
-	if ( env->make_integer(env, cs) > 0)
-	{
-	    float fuzzy_score = calculate_match(needle_str, haystack_str, 1);
-	    free(haystack_str);
-	    free(needle_str);
-	    return env->make_float(env,(double)fuzzy_score);
-	}
+
 	float fuzzy_score = calculate_match(needle_str, haystack_str, 0);
 	free(haystack_str);
 	free(needle_str);
