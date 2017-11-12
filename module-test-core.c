@@ -250,7 +250,7 @@ emacs_module_init(struct emacs_runtime *ert)
 #define DEFUN(lsym, csym, amin, amax, doc, data)                        \
         bind_function (env, lsym, env->make_function(env, amin, amax, csym, doc, data))
 
-        DEFUN("calc-score", Fcalc, 2, 3, "Calculate match score", NULL);
+        DEFUN("calc-score", Fcalc, 2, 2, "Calculate match score", NULL);
 
 #undef DEFUN
 
