@@ -22,4 +22,4 @@ clean:
 # test:
 # 	$(EMACS) -Q -batch -L . -l test/test.el -f ert-run-tests-batch-and-exit
 test:
-	$(EMACS) -Q -batch -L . -l t.el -f ert-run-tests-batch-and-exit
+	$(EMACS) -Q -batch -L . -l test/test.el -f ert-run-tests-batch-and-exit
