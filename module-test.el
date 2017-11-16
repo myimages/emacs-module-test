@@ -26,6 +26,13 @@
 (require 'cl-lib)
 (require 'module-test-core)
 
+(defun perfect-score (needle haystack)
+  " modify the score so it "
+  (let* ((score (calc-score needle haystack)))
+    (if (string-match-p (regexp-quote needle) haystack )
+	(+ score .1)
+    (calc-score needle haystack))))
+
 (provide 'module-test)
 
 ;;; module-test.el ends here

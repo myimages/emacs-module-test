@@ -26,10 +26,13 @@
 
 
 (ert-deftest test-calc-score ()
-    (should (= (calc-score "needle" "score the needle in the haystack") 0.5739583373069763)))
-
-;; (ert-deftest foo ()
-;;     (should (= (calc-score "Foo" "Foobar" t) 0.75)))
+  (should (= (perfect-score "foo" "foobar") 0.85)))
 
 
-;;; test.el ends here
+
+(ert-deftest test-consecutive-match ()
+  "leading word separators should be penalized"
+  (let* ((query "ido")
+         (higher (perfect-score query "lisp/ido.el"))
+         (lower (perfect-score query "lisp/dom.el")))
+    (should (> higher lower))))
