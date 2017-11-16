@@ -23,7 +23,6 @@
 
 ;;; Code:
 
-(require 'cl-lib)
 (require 'module-test-core)
 
 (defun perfect-score (needle haystack)
